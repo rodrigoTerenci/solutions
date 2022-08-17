@@ -1,4 +1,37 @@
 # solutions
+###################################efeitos para filtros ###########################################################
+myFilterMethod (node, filter) {
+    node.name.includes(filter) ? this.blink(node.name) : console.log('object')
+    return node.name.toLowerCase().includes(filter.toLowerCase())
+  },
+  blink (text) {
+    const xpath = `//div[text()='${text}']`
+    const matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    console.log('matchingElement', matchingElement)
+    matchingElement.classList.add('animate__animated', 'animate__tada')
+    setTimeout(() => {
+      matchingElement.classList.remove('animate__tada')
+    }, 1000)
+  }
+  .blinked {
+  animation-duration: 2s;
+  animation: blink 1s linear forwards;
+}
+
+@keyframes blink {
+  0% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: yellowgreen;
+    transform: scale(1.5);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+
 Pequenos trechos úteis de código
 //////////////////////////////////VALIDADOR CPF/CNPJ VUE///////////////////////////////////////////////SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 cpf (cpf) {
